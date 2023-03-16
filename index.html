@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Kanit:wght@300&family=Oswald&family=Tilt+Neon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class = "container">
+        <div class = "card">
+            <div class = "search-box">
+                <input type="text" placeholder="enter city name" spellcheck="false">
+               
+                    
+                <div class="search-btn">
+                    <button class="search-btn2"></button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    
+                </div>
+                <div class="cancel-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="search-data">search here</div>
+            </div>
+            
+
+        </div>
+        <div class ="weather">
+            <img src="cloudy.png" class = "weather-icon">
+            <h1 class="temp">22c</h1>
+            <h2 class ="city">roorkee</h2>
+            <div class = "details">
+                <div class = "cols">
+                    <i class="fa-regular fa-clouds"></i>
+                    <div>
+                        <p class ="humidity">50%</p>
+                        <p>humidity</p>
+                    </div>
+                </div>
+                <div class = "cols">
+                    <i class="fa-solid fa-wind"></i>
+                    <div>
+                        <p class ="wind">15km/h</p>
+                        <p>wind speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+        
+
+    </div>
+    <script>
+        const SearchBtn = document.querySelector(".search-btn");
+        const CancelBtn = document.querySelector(".cancel-btn");
+        const SearchBox = document.querySelector(".search-box");
+        const SearchInput = document.querySelector("input");
+        const SearchData = document.querySelector(".search-data");
+        const SearchBtn2 = document.querySelector(".search-btn2");
+        const searchIn = document.querySelector(".search-box input");
+       
+        SearchBtn.onclick = ( ) =>{
+            SearchBox.classList.add("active");
+            SearchInput.classList.add("active");
+            SearchBtn.classList.add("active");
+            CancelBtn.classList.add("active");
+        }
+        CancelBtn.onclick = ( ) =>{
+            SearchBox.classList.remove("active");
+            SearchInput.classList.remove("active");
+            SearchBtn.classList.remove("active");
+            CancelBtn.classList.remove("active");
+        }
+        const apikey ="41f7b9877bc410d279e6b0b3220c0bb4 ";
+        const apiurl ="https://api.openweathermap.org/data/2.5/weather?units=metric ";
+        async function checkweather(city){
+            const response =await fetch(apiurl + city+ `&appid=${apikey}`);
+            var data = await response.json();
+            console.log(data);
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) +"°C";
+            document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+            document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+
+        }
+        SearchBtn2.addEventListener("click", ()=>{
+            checkweather(SearchIn.value);
+
+        })
+        
+       
+    </script>
+</body>
+</html>

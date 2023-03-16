@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+body{
+    display:grid;
+    place-items: center;
+    
+}
+.container{
+    width:100%;
+    height:100vh;
+    background-image: linear-gradient(rgba(0,0,50,0.8),rgba(0,0,50,0.8)), url(cloud1.jpg);
+    background-position: center;
+    background-size: cover;
+    position:relative;
+    align-items: center;
+}
+.card{
+    display:flex;
+    justify-content: center;
+    width:90%;
+    max-width: 470px;
+    height:150px;
+    border-radius: 20px;
+    padding: 40px 35px;
+    
+    position:absolute;
+    top:25%;
+    left:30%;
+    text-align:center;
+    background:linear-gradient(135deg, #2C3E50 , #0000)
+}
+.search-box
+{
+   width:50px;
+   height:50px;
+   position:relative;
+   transition:all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+}
+.search-box.active{
+    width:350px;
+}
+.search-box input{
+    height:100%;
+    width:100%;
+    border: none;
+    border-radius: 50px;
+    outline:none;
+    font-size: 18px;
+    
+    padding: 0px 60px 0px 20px;
+    opacity: 0;
+
+}
+.search-box input.active{
+    opacity:1;
+}
+.search-box .search-btn{
+    height:50px;
+    width:50px;
+    color:black;
+    position:absolute;
+    top:50%;
+    right:0px;
+    background-color: white;
+    transform:translateY(-50%);
+    line-height: 50px;
+    text-align:center;
+    border-radius:50px;
+    font-size:20px;
+    cursor: pointer;
+}
+.search-box .search-btn.active{
+    right:5px;
+    height:50px;
+    width:50px;
+    color:black;
+    background: white;
+    line-height:50px ;
+    transform:translateY(-50%) rotate(360deg);
+}
+
+.search-box .cancel-btn{
+    position: absolute;
+    top:30%;
+    
+    right: -50px;
+    font-size: 25px;
+    cursor: pointer;
+
+
+}
+.search-box .search-data{
+    text-align:center;
+    padding-top: 7px;
+    color:white;
+    font-size:18px;
+    word-wrap: break-word;
+
+}
+.search-box .search-data.active{
+    display:none;
+
+
+}
+.weather{
+    display:flex;
+    justify-content: center;
+    
+    position:relative;
+    top: 60%;
+    
+}
+.weather .weather-icon{
+    width:100px;
+    height:100px;
+}
+.cols{
+    padding:10px;
+    color:white;
+}
+.weather h1{
+    font-size: 80px;
+    font-weight: 500;
+    color:white;
+    
+}
+.weather h2{
+    font-size: 45px;
+    font-weight: 200;
+    margin-top: -10px;
+    color:white;
+    
+}
+.humidity, .wind{
+    font-size: 28px;
+    color: white;
+}
